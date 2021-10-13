@@ -1,0 +1,18 @@
+{
+  "Register": [
+    {
+      "id": 1,
+      "name": "Aditya Singh",
+      "email": "aditya03@gmail.com",
+      "address": "Mohali",
+      "password": 123
+    },
+    {
+      "id": 2,
+      "name": "Samir Singh",
+      "email": "samir1@gmail.com",
+      "address": "Chandigarh",
+      "password": 555
+    }
+  ]
+}

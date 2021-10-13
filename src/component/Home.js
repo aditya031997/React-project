@@ -1,57 +1,55 @@
-import React from "react";
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import Header from "./Header";
+import { Container, Table } from "react-bootstrap";
+import Button from "@restart/ui/esm/Button";
 export default function Home(prop) {
-  function handleClear(e) {
+  const [data, SetData] = useState([]);
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = () => {
+    fetch("http://localhost:8000/Register").then((reqs) => {
+      reqs.json().then((result) => {
+        SetData(result);
+        //console.log(result);
+      });
+    });
+  };
+
+  const handleEdit = (e) => {
     e.preventDefault();
-    localStorage.clear();
-    prop.history.push("/login");
-  }
+    prop.history.push("/update");
+  };
+
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Nav>
-            <Link to="/" className="mx-4  text-light text-decoration-none">
-              Home
-            </Link>
-            <Link to="/about" className="mx-4 text-light text-decoration-none">
-              About
-            </Link>
-            <Link to="/contact" className="mx-4 text-light text-decoration-none">
-              Contact
-            </Link>
-          </Nav>
-          <div>
-            <Nav>
-              <NavDropdown id="nav-dropdown-dark-example" title="Dropdown" menuVariant="dark">
-                {localStorage.getItem("UserEmail") ? (
-                  <>
-                    <Link to="/about" className="text-light text-decoration-none">
-                      About
-                    </Link>
-                    <br />
-                    <Link className="text-light text-decoration-none" onClick={handleClear}>
-                      Log Out
-                    </Link>
-                  </>
-                ) : (
-                  <>
-                    {" "}
-                    <Link to="/register" className="text-light text-decoration-none">
-                      Registration
-                    </Link>
-                    <br />
-                    <Link to="/login" className="text-light">
-                      Login
-                    </Link>
-                  </>
-                )}
-              </NavDropdown>
-            </Nav>
-          </div>
-        </Container>
-      </Navbar>
+      <Header />
+      <h1 style={{ textAlign: "center" }}>User Data</h1>
+      <Container>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item) => (
+              <tr>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.email}</td>
+                <td>{item.address}</td>
+                <td>
+                  <Button onClick={handleEdit}>Edit</Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </Container>
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import React from "react";
-import Home from "./Home";
+import Header from "./Header";
 export default function About() {
   return (
     <div>
-      <Home />
-      <h1>About Page</h1>
+      <Header />
+      <h1>About page</h1>
     </div>
   );
 }

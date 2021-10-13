@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Col, Form, Button, Row, Container, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import Home from "./component/Home";
+import Header from "./component/Header";
 export default function Register(prop) {
   const [val, setVal] = useState({ email: "", password: "" });
 
@@ -24,7 +24,7 @@ export default function Register(prop) {
 
   return (
     <div>
-      <Home />
+      <Header />
       <Container>
         <Card style={{ padding: 100, margin: 120 }}>
           <Form onSubmit={handleSubmit}>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button, Container, Card } from "react-bootstrap";
-import Home from "./component/Home";
+import Header from "./component/Header";
 import { Link, Redirect } from "react-router-dom";
 export default function User(prop) {
   const [data, setData] = useState("");
@@ -24,7 +24,7 @@ export default function User(prop) {
   }
   return (
     <div>
-      <Home />
+      <Header />
       <Container>
         <Card style={{ padding: 130, margin: 160 }}>
           <Form onSubmit={handleSubmit}>
