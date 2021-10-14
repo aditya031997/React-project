@@ -15,6 +15,18 @@ export default function Register(prop) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    fetch("http://localhost:8000/Register", {
+      method: "Post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(val),
+    }).then((reqs) => {
+      reqs.json().then((result) => {
+        console.log(result);
+      });
+    });
+
     console.log(val);
     localStorage.setItem("UserEmail", val.email);
     localStorage.setItem("UserPassword", val.password);
@@ -29,6 +41,15 @@ export default function Register(prop) {
         <Card style={{ padding: 100, margin: 120 }}>
           <Form onSubmit={handleSubmit}>
             <h1 style={{ textAlign: "center", color: "blue" }}>Registration Page</h1>
+            <Form.Group as={Col} controlId="formGridName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter name"
+                name="name"
+                onChange={handleChange}
+              />
+            </Form.Group>
             <Row className="mb-3">
               <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label>Email</Form.Label>
@@ -50,9 +71,9 @@ export default function Register(prop) {
                 />
               </Form.Group>
             </Row>
-            <Form.Group className="mb-3" controlId="formGridAddress1">
-              <Form.Label>Address</Form.Label>
-              <Form.Control placeholder="1234 Main St" name="address" onChange={handleChange} />
+            <Form.Group className="mb-3" controlId="formGridContact">
+              <Form.Label>Contact</Form.Label>
+              <Form.Control placeholder="987654310" name="contact" onChange={handleChange} />
             </Form.Group>
             <Row className="mb-3">
               <Form.Group as={Col} controlId="formGridCity">

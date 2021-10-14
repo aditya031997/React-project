@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import { Container, Table } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
+import Update from "./Update";
 export default function Home(prop) {
+  const [modalShow, setModalShow] = useState(false);
   const [data, SetData] = useState([]);
   useEffect(() => {
     getData();
@@ -16,9 +18,15 @@ export default function Home(prop) {
     });
   };
 
-  const handleEdit = (e) => {
-    e.preventDefault();
-    prop.history.push("/update");
+  const handleDelete = (id) => {
+    fetch("http://localhost:8000/Register/" + id, {
+      method: "DELETE",
+    }).then((reqs) => {
+      reqs.json().then((result) => {
+        alert("Deleted");
+        getData();
+      });
+    });
   };
 
   return (
@@ -32,18 +40,28 @@ export default function Home(prop) {
               <th>Id</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Address</th>
+              <th>Contact</th>
+              <th>City</th>
+              <th>State</th>
             </tr>
           </thead>
           <tbody>
-            {data.map((item) => (
-              <tr>
-                <td>{item.id}</td>
+            {data.map((item, i) => (
+              <tr key={i}>
+                <td key={i}>{i + 1}</td>
                 <td>{item.name}</td>
                 <td>{item.email}</td>
-                <td>{item.address}</td>
+                <td>{item.contact}</td>
+                <td>{item.city}</td>
+                <td>{item.state}</td>
                 <td>
-                  <Button onClick={handleEdit}>Edit</Button>
+                  <Button variant="primary" onClick={() => setModalShow(true)}>
+                    Edit
+                  </Button>
+                  <Update show={modalShow} onHide={() => setModalShow(false)} />
+                  <Button variant="primary" className="m-2" onClick={() => handleDelete(item.id)}>
+                    Delete
+                  </Button>
                 </td>
               </tr>
             ))}

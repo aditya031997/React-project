@@ -4,15 +4,37 @@
       "id": 1,
       "name": "Aditya Singh",
       "email": "aditya03@gmail.com",
-      "address": "Mohali",
-      "password": 123
+      "contact": 8146724743,
+      "password": 123,
+      "city": "Mohali",
+      "state": "Punjab"
     },
     {
-      "id": 2,
-      "name": "Samir Singh",
-      "email": "samir1@gmail.com",
-      "address": "Chandigarh",
-      "password": 555
+      "email": "aditya031997@gmail.com",
+      "password": "333",
+      "name": "Aditya singh",
+      "contact": "9876543210",
+      "city": "mohali",
+      "state": "Punjab",
+      "id": 4
+    },
+    {
+      "email": "aditya031997@gmail.com",
+      "password": "555",
+      "name": "Aditya singh",
+      "contact": "9876543210",
+      "city": "mohali",
+      "state": "Punjab",
+      "id": 5
+    },
+    {
+      "email": "adi@.com",
+      "password": "777",
+      "name": "Aditya singh",
+      "contact": "9876543210",
+      "city": "Kharar",
+      "state": "Punjab",
+      "id": 6
     }
   ]
 }

@@ -1,42 +1,42 @@
 import React from "react";
-import { Col, Form, Button, Row, Container, Card } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-export default function Update(prop) {
-  const handleUpdate = (e) => {
-    e.preventDefault();
-    prop.history.push("/");
-  };
+import { Modal, Button, Form, Col, Row } from "react-bootstrap";
+function Update(props) {
   return (
-    <div>
-      <Container>
-        <Card style={{ padding: 100, margin: 120 }}>
-          <Form>
-            <h1 style={{ textAlign: "center", color: "blue" }}>Update Data</h1>
-            <Row className="mb-3">
-              <Form.Group as={Col} controlId="formGridId">
-                <Form.Label>Id</Form.Label>
-                <Form.Control type="text" placeholder="Enter Id" name="id" />
-              </Form.Group>
-              <Form.Group as={Col} controlId="formGridName">
-                <Form.Label>Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter Name" name="name" />
-              </Form.Group>
+    <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">Edit Data</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form.Group as={Col} controlId="formGridName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control type="text" placeholder="Enter name" name="name" />
+        </Form.Group>
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="text" placeholder="Enter email" name="email" />
+          </Form.Group>
 
-              <Form.Group as={Col} controlId="formGridEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="text" placeholder="Enter Email" name="email" />
-              </Form.Group>
-            </Row>
-            <Form.Group className="mb-3" controlId="formGridAddress1">
-              <Form.Label>Address</Form.Label>
-              <Form.Control placeholder="1234 Main St" name="address" />
-            </Form.Group>
-            <Button variant="primary" type="submit" onClick={handleUpdate}>
-              Update
-            </Button>
-          </Form>
-        </Card>
-      </Container>
-    </div>
+          <Form.Group as={Col} controlId="formGridContact">
+            <Form.Label>Contact</Form.Label>
+            <Form.Control type="text" placeholder="987654321" name="contact" />
+          </Form.Group>
+        </Row>
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="formGridCity">
+            <Form.Label>City</Form.Label>
+            <Form.Control name="city" />
+          </Form.Group>
+          <Form.Group as={Col} controlId="formGridCity">
+            <Form.Label>State</Form.Label>
+            <Form.Control name="state" />
+          </Form.Group>
+        </Row>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Update</Button>
+      </Modal.Footer>
+    </Modal>
   );
 }
+export default Update;

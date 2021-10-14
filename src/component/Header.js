@@ -1,12 +1,13 @@
 import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 export default function Header(prop) {
-  function handleClear(e) {
-    e.preventDefault();
+  const history = useHistory();
+  function handleClear() {
     localStorage.clear();
-    prop.history.push("/login");
+    history.push("/login");
   }
   return (
     <div>
@@ -32,9 +33,13 @@ export default function Header(prop) {
                       About
                     </Link>
                     <br />
-                    <span className="text-light text-decoration-none" onClick={handleClear}>
+                    <Button
+                      variant="link"
+                      className="text-light text-decoration-none p-0"
+                      onClick={handleClear}
+                    >
                       Log Out
-                    </span>
+                    </Button>
                   </>
                 ) : (
                   <>
