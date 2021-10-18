@@ -14,7 +14,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={Home} />
+          <PrivateRoutes path="/" exact component={Home} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/update" component={Update} />

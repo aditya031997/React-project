@@ -3,22 +3,27 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button, Container, Card } from "react-bootstrap";
 import Header from "./component/Header";
 import { Link, Redirect } from "react-router-dom";
+import jsonData from "./database/db.json";
 export default function User(prop) {
-  const [data, setData] = useState("");
-
+  const [data, setData] = useState({ email: "", password: "" });
+  let name, value;
   function handleChange(e) {
-    const name = e.target.name;
-    const value = e.target.value;
-    setData((values) => ({ ...values, [name]: value }));
+    name = e.target.name;
+    value = e.target.value;
+    setData({ ...data, [name]: value });
   }
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (localStorage.getItem("UserEmail") === data.email) {
-      prop.history.push("/about");
+
+    var isExist = jsonData.Register.findIndex(
+      (obj) => obj.email === data.email && obj.password === data.password
+    );
+    if (isExist !== -1) {
+      localStorage.setItem("UserEmail", data.email);
+      prop.history.push("/");
     }
-    console.log(data);
-  }
+  };
   if (localStorage.getItem("UserEmail")) {
     return <Redirect to="/" />;
   }

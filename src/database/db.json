@@ -10,31 +10,31 @@
       "state": "Punjab"
     },
     {
-      "email": "aditya031997@gmail.com",
-      "password": "333",
-      "name": "Aditya singh",
+      "email": "madaananjali80@gmail.com",
+      "password": "666",
+      "name": "Anjali",
       "contact": "9876543210",
-      "city": "mohali",
+      "city": "Ludhiana",
       "state": "Punjab",
-      "id": 4
+      "id": 7
     },
     {
-      "email": "aditya031997@gmail.com",
+      "email": "chottu@gmail.com",
       "password": "555",
-      "name": "Aditya singh",
-      "contact": "9876543210",
-      "city": "mohali",
-      "state": "Punjab",
-      "id": 5
+      "name": "chottu sir",
+      "contact": "8699032728",
+      "city": "gaya",
+      "state": "bihar",
+      "id": 8
     },
     {
-      "email": "adi@.com",
-      "password": "777",
-      "name": "Aditya singh",
-      "contact": "9876543210",
-      "city": "Kharar",
+      "email": "nav@gmail.com",
+      "password": "nav",
+      "name": "nav",
+      "contact": "8528180741",
+      "city": "goraya",
       "state": "Punjab",
-      "id": 6
+      "id": 9
     }
   ]
 }
