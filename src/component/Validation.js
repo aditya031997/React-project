@@ -1,3 +1,4 @@
+import { emailRegex, strongRegex, phoneRegex } from "./Regex";
 function Validation(values) {
   let errors = {};
   if (!values.name) {
@@ -5,12 +6,18 @@ function Validation(values) {
   }
   if (!values.email) {
     errors.email = "email is require";
+  } else if (emailRegex.test(values.email)) {
+    errors.email = "invalid email";
   }
   if (!values.password) {
     errors.password = "password is require";
+  } else if (strongRegex.test(values.password)) {
+    errors.password = "invalid password";
   }
   if (!values.contact) {
-    errors.contact = "cotact is require";
+    errors.contact = "contact is require";
+  } else if (phoneRegex.test(values.contact)) {
+    errors.contact = "only numeric value";
   }
   if (!values.city) {
     errors.city = "city is require";
