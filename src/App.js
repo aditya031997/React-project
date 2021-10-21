@@ -9,6 +9,7 @@ import Contact from "./component/Contact";
 import Home from "./component/Home";
 import PrivateRoutes from "./component/PrivateRouter";
 import Update from "./component/Update";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <div>

@@ -4,13 +4,19 @@ import { Form, Button, Container, Card } from "react-bootstrap";
 import Header from "./component/Header";
 import { Link, Redirect } from "react-router-dom";
 import jsonData from "./database/db.json";
+import FormValidation from "./component/FormValidation";
 export default function User(prop) {
   const [data, setData] = useState({ email: "", password: "" });
+  const [formErrors, setFormErrors] = useState({});
   let name, value;
   function handleChange(e) {
     name = e.target.name;
     value = e.target.value;
     setData({ ...data, [name]: value });
+    setFormErrors({
+      ...formErrors,
+      [e.target.name]: FormValidation.Login(e.target.name, e.target.value),
+    });
   }
 
   const handleSubmit = (e) => {
@@ -43,11 +49,10 @@ export default function User(prop) {
                 value={data.email}
                 onChange={handleChange}
               />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
             </Form.Group>
-
+            {formErrors.email && (
+              <div style={{ color: "red", fontSize: 14 }}>{formErrors.email}</div>
+            )}
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
@@ -58,6 +63,9 @@ export default function User(prop) {
                 onChange={handleChange}
               />
             </Form.Group>
+            {formErrors.password && (
+              <div style={{ color: "red", fontSize: 14 }}>{formErrors.password}</div>
+            )}
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>

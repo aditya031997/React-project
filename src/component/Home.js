@@ -3,6 +3,7 @@ import Header from "./Header";
 import { Container, Table } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
 import Update from "./Update";
+import { Helmet } from "react-helmet";
 export default function Home(prop) {
   const [modalShow, setModalShow] = useState(false);
   const [data, SetData] = useState([]);
@@ -32,6 +33,9 @@ export default function Home(prop) {
   return (
     <div>
       <Header />
+      <Helmet>
+        <style>{"body { background-color: red; }"}</style>
+      </Helmet>
       <h1 style={{ textAlign: "center" }}>User Data</h1>
       <Container>
         <Table striped bordered hover>

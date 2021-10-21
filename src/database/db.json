@@ -37,9 +37,22 @@
       "id": 9
     },
     {
-      "email": "",
-      "password": "",
+      "name": "Samir",
+      "email": "samir111@gmail.com",
+      "password": "111",
+      "contact": "8528180741",
+      "city": "phagwara",
+      "state": "Punjab",
       "id": 10
+    },
+    {
+      "name": "Aditya singh",
+      "email": "aditya031997@gmail.com",
+      "password": "Aditya@1",
+      "contact": "8699032728",
+      "city": "jalandhar",
+      "state": "Punjab",
+      "id": 11
     }
   ]
 }
